@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEVAGUHAN | EarnSmart</title>
+
+<style>
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #172033;
+  --muted: #68748a;
+  --primary: #6755e8;
+  --accent: #14b8a6;
+  --border: #e5e9f2;
+}
+
+body.dark {
+  --bg: #101522;
+  --card: #1a2233;
+  --text: #f2f5ff;
+  --muted: #a6b0c5;
+  --border: #303a4f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.25s;
+}
+
+header {
+  background: linear-gradient(120deg, #5142d9, #8b5cf6);
+  color: white;
+  padding: 24px 18px;
+  border-radius: 0 0 26px 26px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand span {
+  color: #baffee;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-weight: bold;
+}
+
+.theme-btn {
+  background: rgba(255,255,255,0.18);
+  color: white;
+}
+
+.hero {
+  padding: 30px 0 12px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin: 8px 0;
+  line-height: 1.2;
+}
+
+.hero p {
+  line-height: 1.6;
+  color: #e9e7ff;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.17);
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 12px 0 28px;
+}
+
+.stat, .card, .panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 17px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 23px;
+  margin-bottom: 7px;
+  color: var(--primary);
+}
+
+.stat small {
+  color: var(--muted);
+}
+
+h2 {
+  font-size: 22px;
+  margin: 25px 0 14px;
+}
+
+.section-desc {
+  color: var(--muted);
+  margin-top: -7px;
+  line-height: 1.5;
+}
+
+.search {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  outline-color: var(--primary);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 13px 0 18px;
+}
+
+.filters button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.filters button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 5px 0 8px;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.tag {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card button {
+  margin-top: 8px;
+  background: var(--primary);
+  color: white;
+}
+
+.card .save {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.panel {
+  margin-top: 20px;
+}
+
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin: 12px 0 7px;
+  color: var(--muted);
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.result {
+  margin-top: 15px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--bg);
+  line-height: 1.8;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 430px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    gap: 7px;
+  }
+
+  .stat {
+    padding: 12px 8px;
+  }
+
+  .stat strong {
+    font-size: 19px;
+  }
+
+  .stat small {
+    font-size: 10px;
+  }
+
+  .calc-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">DEVAGUHAN<span>.</span></div>
+    <button class="theme-btn" onclick="toggleTheme()"
+      aria-label="Toggle dark mode">🌙 Theme</button>
+  </div>
+
+  <div class="hero">
+    <span class="badge">🚀 YOUR DIGITAL BUSINESS HUB</span>
+    <h1>Learn Skills.<br>Build Your Future.</h1>
+    <p>Discover online business ideas, develop valuable skills,
+       and explore ways to build income online.</p>
+    <button onclick="document.getElementById('opportunities').scrollIntoView({behavior:'smooth'})">
+      Explore Opportunities →
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="ideaCount">6</strong>
+      <small>Business Ideas</small>
+    </div>
+
+    <div class="stat">
+      <strong id="savedCount">0</strong>
+      <small>Saved Ideas</small>
+    </div>
+
+    <div class="stat">
+      <strong>₹0</strong>
+      <small>To Explore Free</small>
+    </div>
+  </div>
+
+  <section id="opportunities">
+    <h2>💡 Explore Opportunities</h2>
+    <p class="section-desc">
+      Start learning today. Choose a skill and work toward your goals.
+    </p>
+
+    <input id="searchInput" class="search"
+      placeholder="🔍 Search business ideas..."
+      oninput="renderCards()">
+
+    <div class="filters">
+      <button class="active" onclick="setFilter('All',this)">All</button>
+      <button onclick="setFilter('Skills',this)">Skills</button>
+      <button onclick="setFilter('Business',this)">Business</button>
+      <button onclick="setFilter('Creative',this)">Creative</button>
+      <button onclick="setFilter('Saved',this)">❤️ Saved</button>
+    </div>
+
+    <div class="grid" id="ideaGrid"></div>
+  </section>
+
+  <section class="panel">
+    <h2>🧮 Income Goal Calculator</h2>
+    <p class="section-desc">
+      Estimate possible monthly profit using your own assumptions.
+      These figures are not guaranteed earnings.
+    </p>
+
+    <div class="calc-row">
+      <div>
+        <label for="sales">Monthly sales or projects</label>
+        <input id="sales" type="number" min="0" value="10">
+      </div>
+
+      <div>
+        <label for="price">Income per sale/project (₹)</label>
+        <input id="price" type="number" min="0" value="200">
+      </div>
+
+      <div>
+        <label for="cost">Total monthly expenses (₹)</label>
+        <input id="cost" type="number" min="0" value="300">
+      </div>
+
+      <div>
+        <label for="goal">Monthly profit goal (₹)</label>
+        <input id="goal" type="number" min="0" value="5000">
+      </div>
+    </div>
+
+    <button class="primary-btn" onclick="calculate()">Calculate Estimate</button>
+
+    <div class="result" id="result" aria-live="polite">
+      Enter your figures and calculate your estimate.
+    </div>
+  </section>
+
+  <section>
+    <h2>📦 Digital Product Ideas</h2>
+    <p class="section-desc">
+      Create something useful once and sell it repeatedly.
+      You still need customers and may need to update your products.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📘</div>
+        <h3>Mini E-books</h3>
+        <p>Create original guides about a skill you know well.</p>
+        <button onclick="showInfo('Mini E-books','Write an original, helpful guide. Examples include beginner HTML lessons or study planners.')">Explore Idea</button>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Design Templates</h3>
+        <p>Make original posters, planners, or social media designs.</p>
+        <button onclick="showInfo('Design Templates','Create reusable designs and offer them through a suitable selling platform.')">Explore Idea</button>
+      </div>
+
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>Website Templates</h3>
+        <p>Build useful HTML templates for small businesses.</p>
+        <button onclick="showInfo('Website Templates','Create mobile-friendly website templates, test them, and document how to use them.')">Explore Idea</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>🎯 Your First 30-Day Challenge</h2>
+    <p>✅ Days 1–7: Learn basic HTML and CSS.</p>
+    <p>✅ Days 8–14: Build a simple website project.</p>
+    <p>✅ Days 15–21: Improve the design and test it on mobile.</p>
+    <p>✅ Days 22–30: Publish a portfolio and look for feedback.</p>
+    <p class="section-desc">
+      Your first goal is to build a useful skill, not to expect instant income.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <strong>DEVAGUHAN EarnSmart</strong><br>
+  Learn • Build • Improve<br><br>
+  Educational project. Income is not guaranteed.
+</footer>
+
+<script>
+const ideas = [
+  {
+    id: 1,
+    icon: "💻",
+    title: "Web Development",
+    category: "Skills",
+    description: "Learn HTML, CSS and JavaScript to create websites.",
+    action: "Start with a simple personal portfolio."
+  },
+  {
+    id: 2,
+    icon: "🎨",
+    title: "Graphic Design",
+    category: "Creative",
+    description: "Create posters, thumbnails and original digital designs.",
+    action: "Build a portfolio of five original designs."
+  },
+  {
+    id: 3,
+    icon: "✍️",
+    title: "Content Writing",
+    category: "Skills",
+    description: "Learn to write useful articles, guides and website content.",
+    action: "Write three helpful articles on a topic you know."
+  },
+  {
+    id: 4,
+    icon: "📱",
+    title: "Social Media Design",
+    category: "Creative",
+    description: "Design social posts and content packages for creators.",
+    action: "Create a sample content pack."
+  },
+  {
+    id: 5,
+    icon: "📚",
+    title: "Digital Products",
+    category: "Business",
+    description: "Develop original ebooks, templates or study planners.",
+    action: "Create a useful product prototype."
+  },
+  {
+    id: 6,
+    icon: "🎥",
+    title: "Educational Content",
+    category: "Business",
+    description: "Share useful tutorials and build an audience over time.",
+    action: "Plan five short educational lessons."
+  }
+];
+
+let currentFilter = "All";
+let favorites = [];
+
+try {
+  favorites = JSON.parse(
+    localStorage.getItem("devaguhanFavorites") || "[]"
+  );
+
+  if (!Array.isArray(favorites)) favorites = [];
+} catch (error) {
+  favorites = [];
+}
+
+function saveFavorites() {
+  try {
+    localStorage.setItem(
+      "devaguhanFavorites",
+      JSON.stringify(favorites)
+    );
+  } catch (error) {
+    alert("Browser storage is unavailable. Favorites may not persist.");
+  }
+}
+
+function renderCards() {
+  const grid = document.getElementById("ideaGrid");
+  const search = document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+  const filtered = ideas.filter(item => {
+    const matchesSearch =
+      (item.title + " " + item.description + " " + item.category)
+      .toLowerCase().includes(search);
+
+    const matchesCategory =
+      currentFilter === "All" ||
+      item.category === currentFilter ||
+      (currentFilter === "Saved" && favorites.includes(item.id));
+
+    return matchesSearch && matchesCategory;
+  });
+
+  grid.innerHTML = "";
+
+  if (filtered.length === 0) {
+    grid.innerHTML =
+      '<p>No ideas found. Try another search.</p>';
+  }
+
+  filtered.forEach(item => {
+    const saved = favorites.includes(item.id);
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const icon = document.createElement("div");
+    icon.className = "icon";
+    icon.textContent = item.icon;
+
+    const tag = document.createElement("div");
+    tag.className = "tag";
+    tag.textContent = item.category.toUpperCase();
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+
+    const desc = document.createElement("p");
+    desc.textContent = item.description;
+
+    const explore = document.createElement("button");
+    explore.textContent = "Explore Idea";
+    explore.addEventListener("click", () => showInfo(item.title, item.action));
+
+    const save = document.createElement("button");
+    save.className = "save";
+    save.textContent = saved ? "❤️ Saved" : "♡ Save Idea";
+    save.setAttribute("aria-pressed", String(saved));
+
+    save.addEventListener("click", () => {
+      if (favorites.includes(item.id)) {
+        favorites = favorites.filter(id => id !== item.id);
+      } else {
+        favorites.push(item.id);
+      }
+
+      saveFavorites();
+      renderCards();
+      updateCounts();
+    });
+
+    card.append(icon, tag, title, desc, explore, save);
+    grid.appendChild(card);
+  });
+
+  document.getElementById("ideaCount").textContent = ideas.length;
+  updateCounts();
+}
+
+function updateCounts() {
+  document.getElementById("savedCount").textContent =
+    favorites.length;
+}
+
+function setFilter(filter, button) {
+  currentFilter = filter;
+
+  document.querySelectorAll(".filters button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  renderCards();
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  document.querySelector(".theme-btn").textContent =
+    isDark ? "☀️ Theme" : "🌙 Theme";
+
+  try {
+    localStorage.setItem("devaguhanTheme", isDark ? "dark" : "light");
+  } catch (error) {}
+}
+
+function calculate() {
+  const sales = Number(document.getElementById("sales").value);
+  const price = Number(document.getElementById("price").value);
+  const cost = Number(document.getElementById("cost").value);
+  const goal = Number(document.getElementById("goal").value);
+  const result = document.getElementById("result");
+
+  if (
+    ![sales, price, cost, goal].every(Number.isFinite) ||
+    ![sales, price, cost, goal].every(n => n >= 0) ||
+    ![sales, price, cost, goal].every(n => n <= 1e12)
+  ) {
+    result.textContent =
+      "Please enter valid, non-negative numbers.";
+    return;
+  }
+
+  const revenue = sales * price;
+  const profit = revenue - cost;
+  const remaining = goal - profit;
+
+  result.replaceChildren();
+
+  const lines = [
+    ["Estimated revenue", revenue],
+    ["Estimated profit", profit],
+    ["Monthly profit goal", goal],
+    [
+      remaining > 0 ? "More profit needed" : "Goal status",
+      remaining > 0 ? remaining : "Goal reached in this estimate"
+    ]
+  ];
+
+  lines.forEach(([label, value]) => {
+    const line = document.createElement("div");
+    line.textContent = label + ": " +
+      (typeof value === "number"
+        ? "₹" + value.toLocaleString("en-IN")
+        : value);
+    result.appendChild(line);
+  });
+
+  const note = document.createElement("small");
+  note.textContent =
+    "Estimates only. Actual sales, fees, taxes and expenses may differ.";
+  result.appendChild(note);
+}
+
+function showInfo(title, message) {
+  alert(title + "\n\n" + message);
+}
+
+try {
+  if (localStorage.getItem("devaguhanTheme") === "dark") {
+    document.body.classList.add("dark");
+    document.querySelector(".theme-btn").textContent = "☀️ Theme";
+  }
+} catch (error) {}
+
+renderCards();
+calculate();
+</script>
+
+</body>
+</html>
